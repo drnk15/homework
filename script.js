@@ -1,54 +1,110 @@
-// 1. Поменять местами значения двух переменных:
-function variableSwither(a, b) {
-	let c = a;
-	a = b;
-	b = c;
-	console.log(a, b)
+//1. Вычислить факториал числа n. n - рандом от 1 до 15
+//2. Вывести таблицу значений функции y = -0.23x
+//2 + x. Значения аргумента (x) задаются
+//минимумом, максимумом и шагом. (как вариант, ещё и попробовать нарисовать в
+//консоли)
+//3. Найти сумму и произведение цифр введенного натурального числа. число - рандом от
+//10000 до 100000000
+//4. Докажите, что для множества натуральных чисел верно 1+2+...+n = n(n+1)/2
+//5. Вывести на экран столько элементов ряда Фибоначчи, сколько указал пользователь.
+//Например, если на ввод поступило число 6, то вывод должен содержать шесть первых
+//чисел ряда Фибоначчи: 1 2 3 5 8 13.
+/* ряд фибоначчи начинается  с двух единиц */
+function fibonacciCounter (num) {
+	let arr = [];
+	for (let x = 1; x <= num; x++) {
+		console.log
+	}
 }
-
-// 2. Найти длину гипотенузы прямоугольного треугольника:
-function hypotenuseCounter(ca1, ca2) {
-	return Math.sqrt(ca1 * ca1 + ca2 * ca2)
+//Ряд Фибоначчи - это последовательность натуральных чисел, где каждое последующее
+//число является суммой двух предыдущих: 1 1 2 3 5 8 13 21 34 55 89 ...
+//Одномерные массивы
+//1. Задан массив из 20 элементов (рандом от -100 до 100). Найти наибольший элемент
+//массива и его индекс
+function findTheBiggestNumber (arr) {
+	let biggestNumber = arr[0];
+	let biggestNumberIndex = 0;
+	for (let b = 1; b < arr.length; b++) {
+		if (biggestNumber < arr[b]) {
+			biggestNumber = arr[b];
+			biggestNumberIndex = b;
+		}
+	}
+	console.log(`The biggest number is: ${biggestNumber}`);
+	console.log(`The biggest number index is: ${biggestNumberIndex}`)
 }
+//2. Сделать реверс массива (расположить элементы массива в обратном направлении - не
+//вернуть новый массив, а поменять именно в исходном)
 
-// 3. Вывести уравнение прямой y = k*x + b по координатам двух точек
-
-
-/* 1. Посчитать выражениме (max(a*b*c, a+b+c) + 3). 
-a, b, c - рандом от -10 до 10.*/
-
-function countTheBiggest (a, b, c) {
-	return Math.max(a*b*c, a+b+c) + 3
+function arrayReverser (arr) {
+	for (let index = 0; index < arr.length / 2; index++) {
+		let a = arr[index];
+		let z = arr[arr.length-1-index];
+		arr[arr.length-1-index] = a;
+		arr[index] = z;
+	}
+	console.log(arr)
 }
+//3. Поменять местами первую и вторую половину массива, например, для массива 1 2 3 4,
+//результат 3 4 1 2. Если в массиве кол-во элементов нечётное (1 2 3 4 5), “средний”
+//элемент оставить на своём месте: 4 5 3 1 2
+function arrayHalfSwitcher (arr) {
 
-/* 2. Вводятся два целых числа (от -100 до 100). 
-Проверить, делится ли 1-е на 2-е, вывести об этом сообщение, 
-а также частное и остаток.*/
-
-function divisionChecker(c, d) {
-	if (d === 0) {alert("На ноль делить нельзя!")}
-	else if (c % d) {alert("Результат деления: " + Math.round(c / d) + " Остаток: " + c % d)}
-	else {alert("Результат деления: " + c / d)}
 }
-
-/* 3. Определить, какой четверти принадлежат точки с координатами (x, y).
-X, y от -10 до 10.*/
-
-function cornerDefiner (x, y) {
-	if (x > 0 && y > 0) { alert("The point belongs to the 1st corner") }
-	else if (x < 0 && y > 0) { alert("The point belongs to the 2nd corner") }
-	else if (x < 0 && y < 0) { alert("The point belongs to the 3rd corner") }
-	else if (x > 0 && y < 0) { alert("The point belongs to the 4th corner") }
-	else if (x === 0 && y === 0) { alert("This is the start of coordinates system") }
-	else { alert("I don't know") }
+//4. Найти в массиве те элементы, значение которых меньше среднего арифметического,
+//взятого от всех элементов массива.
+function lessThanAverageChecker(arr) {
+	let sum = 0;
+	for (let x of arr) {
+		sum += x
+	}
+	
+	let average = sum / arr.length;
+	let lessThanAverage = [];
+	
+	for (let y of arr) {
+		if (y < average) { lessThanAverage.push(y) }
+	}
+	return lessThanAverage
 }
+//5. В массиве найти сумму элементов, находящихся между минимальным и максимальным
+//элементами. Сами минимальный и максимальный элементы в сумму не включать.
 
-/* 4. Определить принадлежность точки кругу с центром в начале координат:
-вводятся координаты (x, y) точки и радиус круга (r). 
-X, y от -15 до 15, r от -10 до 10.*/
+/* у меня получается, что считается первое вхождение,
+если есть элементы с одинаковыми значениями*/
 
-function pointInRoundChecker (x, y, r) {
-	x ** 2 + y ** 2 === r ** 2 ? alert("The point belongs to this round") : alert("The point doesn't belong to this round")
+function betweenMinAndMax(arr) {
+	let min = arr[0];
+	let minIndex = 0;
+	for (let a = 1; a < arr.length; a++) {
+		if ( min > arr[a] ) { 
+			min = arr[a]; 
+			minIndex = a
+		}
+	}
+	
+	let max = arr[0];
+	let maxIndex = 0;
+	for (let a = 1; a < arr.length; a++) {
+		if ( max < arr[a] ) { 
+			max = arr[a]; 
+			maxIndex = a
+		}
+	}
+	
+	let sum = 0;
+	if (maxIndex < minIndex) {
+		for (let x = maxIndex + 1; x < minIndex; x++)
+		{
+			sum = sum + arr[x]
+		}
+	}
+	else {
+		for (let x = minIndex + 1; x < maxIndex; x++)
+		{
+			sum = sum + arr[x]
+		}
+	}
+	
+	console.log(sum)
 }
-
-// 5. Вычислить корни квадратного уравнения
